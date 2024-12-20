@@ -1,5 +1,4 @@
 import fs from 'fs';
-import { json } from 'express';
 import { multer, PrismaClient, Router } from '../bookstores/bookstores.js';
 
 
@@ -18,10 +17,6 @@ if( !fs.existsSync( pathPublicFileSystem ) ){
 
     fs.mkdirSync( pathImageFileSystem );
 }
-
-
-
-// const pathImageFileSystem = './src/upload-image';
 
 
 const storage = multer.diskStorage({
@@ -43,15 +38,6 @@ route.post( '/create-project', uploadImageMiddleware.single('file'), async(req, 
 
     
     const { name_project, name_technology, project_link, project_file } = req.body;
-    
-    console.log( req.body);
-    console.log(req.file);
-    // console.log(req.file);
-
-    // console.log(req.body.project_file[0].name);
-
-    // console.log(req.files);
-
 
     await prisma.createProject.create({
         data:{
@@ -70,7 +56,6 @@ route.post( '/create-project', uploadImageMiddleware.single('file'), async(req, 
 
 route.get('/show-projects', async( req, res )=>{
 
-    // console.log(res);
 
     const result = await prisma.createProject.findMany();
 
@@ -103,8 +88,6 @@ route.put('/update-project/:id', uploadImageMiddleware.single('file'), async(req
 route.delete('/project-delete/:id', async(req, res)=>{
 
     const { id } = req.params;
-
-    const numberId = parseInt(id);
 
     const projectDelete = await prisma.createProject.delete({
         where: { id: Number(id) }
