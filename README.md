@@ -1,3 +1,5 @@
+0. Antes que nada el archivo descargado debes meterlo en una carpeta y renombrarlo a `` server ``
+
 1. Tener Docker Instalado en tu computador
 
 2. Si quieres ver la base de datos en un interfas grafica descargar Table Plus
