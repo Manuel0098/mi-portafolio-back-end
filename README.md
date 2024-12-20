@@ -8,13 +8,18 @@
 
 4. En la terminal escribir el comando `` npm install  ``
 
-5. Antes de levantar la base de datos tienes que hacer lo siguente
+5. Crear un archivo `` .env `` y pegar el contenido del archivo ```.env.template`` en el archivo ``.env``  
+
+6. Antes de levantar la base de datos tienes que hacer lo siguente
     > Abrir otra terminal
     > Escribir el comando `` cd server ``
     > Luego escribir el comando `` docker compose up -d `` para montar la imagen de postgresql
     > Despues de descargada la imagen puede cerrar la terminal donde escribiste el comando de la linea de arriba
 
-6. Nos ubicamos en la terminal que esta el la ruta de server
-7. Escribimos el comando `` npm start ``
+7. Nos ubicamos en la terminal que esta el la ruta de server
+
+8. Escribimos `` npx prisma migrate dev `` para hacer las migraciones de la base de datos
+
+9. Escribimos el comando `` npm start ``
 
 `` Listo ya tenemos el backend montado ``
