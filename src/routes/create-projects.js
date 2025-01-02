@@ -69,7 +69,7 @@ route.put('/update-project/:id', uploadImageMiddleware.single('file'), async(req
 
     const { name_project, name_technology, project_link } = req.body;
     const { id } = req.params;
-    console.log(id);
+
 
     const projectUpdate = await prisma.createProject.update({
        where:   { id: Number(id) },
