@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { multer, PrismaClient, Router } from '../bookstores/bookstores.js';
+import { fs, multer, PrismaClient, Router } from '../bookstores/bookstores.js';
+import deleteImgFileSystem from '../delete-img-file-system/delete-img-file-system.js';
 
 
 const route = Router();
@@ -49,7 +49,7 @@ route.post( '/create-project', uploadImageMiddleware.single('file'), async(req, 
         }
     });
 
-    res.send(`Imagen cargada en ${pathImageFileSystem}`);
+    res.send(`Proyecto creado`);
 
 } );
 
@@ -67,9 +67,9 @@ route.get('/show-projects', async( req, res )=>{
 
 route.put('/update-project/:id', uploadImageMiddleware.single('file'), async(req, res)=>{
 
-    const { name_project, name_technology, project_link } = req.body;
     const { id } = req.params;
-
+    const { name_project, name_technology, project_link } = req.body;
+    const project_file = req.file.filename; 
 
     const projectUpdate = await prisma.createProject.update({
        where:   { id: Number(id) },
@@ -77,12 +77,11 @@ route.put('/update-project/:id', uploadImageMiddleware.single('file'), async(req
         name_project,
         name_technology,
         project_link,
-        project_file: req.file.filename,
+        project_file,
         } 
     })
-    res.json( projectUpdate )
-
-})
+    res.send( `Proyecto actualizado` );
+});
 
 
 route.delete('/project-delete/:id', async(req, res)=>{
@@ -91,9 +90,24 @@ route.delete('/project-delete/:id', async(req, res)=>{
 
     const projectDelete = await prisma.createProject.delete({
         where: { id: Number(id) }
-    })
-    res.json( projectDelete )
-})
+    });
+
+    res.json( projectDelete );
+    
+});
 
 
-export default route;
+route.delete( '/image-delete-file-system/:project_file', async( req, res )=>{
+
+    const { project_file } = req.params;
+
+    await deleteImgFileSystem( project_file );
+
+});
+
+
+export {
+    route,
+    pathImageFileSystem,
+};
+

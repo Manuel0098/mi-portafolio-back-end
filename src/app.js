@@ -1,7 +1,7 @@
 
-import {server} from './create-serve/server.js';
+import { server } from './create-serve/server.js';
 
-const port = '3001';
+const port = process.env.PORT;
 
-server(port);
+server( port );
 

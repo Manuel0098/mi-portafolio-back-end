@@ -20,3 +20,9 @@ model CreateProject {
    project_link String
    project_file String
 }
+
+model CreateUser {
+  id  Int @id @default(autoincrement())
+  email String @unique
+  password String 
+}
