@@ -5,7 +5,9 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon src/app.js",
+    "start": "src/app.js",
+    "migrate": "npx prisma migrate deploy",
+    "dev": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Manuel Rodriguez",
@@ -13,11 +15,9 @@
   "dependencies": {
     "@prisma/client": "^6.0.1",
     "bcrypt": "^5.1.1",
-    "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "express-session": "^1.18.1",
-    "multer": "^1.4.5-lts.1"
+    "express-session": "^1.18.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9",

@@ -4,7 +4,6 @@ import { cors, express } from '../bookstores/bookstores.js';
 import { user } from '../create-user/create-user.js';
 import { login } from '../login-user/login-user.js';
 import { route } from '../routes/create-projects.js';
-import bodyParser from 'body-parser';
 import session from 'express-session';
 
 
@@ -15,13 +14,6 @@ app.use( express.json() );
 app.use('/api', route );
 app.use('/api', user );
 app.use('/api', login);
-
-// app.use( bodyParser.urlencoded({ extended: true }) );
-// app.use( session({
-//     secret: 'mi_secreto',
-//     resave: false,
-//     saveUnitialized: true
-// }) )
 
 /**
  * 
