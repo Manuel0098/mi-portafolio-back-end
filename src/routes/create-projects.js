@@ -3,6 +3,10 @@ import { PrismaClient, Router } from '../bookstores/bookstores.js';
 const route = Router();
 const prisma = new PrismaClient();
 
+route.get('/', (req, res)=>{
+    res.send('Hello word')
+});
+
 route.post( '/create-project', async(req, res)=>{
         
     const { name_project, name_technology, project_link, project_file } = req.body;
