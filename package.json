@@ -5,10 +5,12 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "src/app.js",
-    "migrate": "npx prisma migrate deploy",
+    "start": "node src/app.js",
+    "migrate": "prisma migrate deploy",
     "dev": "nodemon src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"npm install && npm run migrate",
+    "deply":"npm run build && npm start"
   },
   "author": "Manuel Rodriguez",
   "license": "MIT",
