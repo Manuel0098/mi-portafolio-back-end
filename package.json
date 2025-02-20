@@ -4,6 +4,9 @@
   "description": "",
   "main": "app.js",
   "type": "module",
+  "engines": {
+    "node":"20.10.0"
+  },
   "scripts": {
     "start": "node src/app.js",
     "migrate": "prisma migrate deploy",
